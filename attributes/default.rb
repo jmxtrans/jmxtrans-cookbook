@@ -17,10 +17,10 @@ default['jmxtrans']['servers'] = []
 #default['jmxtrans']['servers'] = [
 #	{ "name" => "10.0.100.14",
 #	  "port" => "9999",
-#	  "type" => "kafka"
+#	  "type" => "kafka",
 #	  "usermame" => "xxxx",
 #	  "password" => "yyyy"
-#	}],
+#	},
 #	{ "name" => "10.0.100.14",
 #	  "port" => "9999",
 #	  "type" => "tomcat",
