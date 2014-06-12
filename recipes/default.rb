@@ -43,11 +43,9 @@ ark "jmxtrans" do
   group node['jmxtrans']['user']
 end
 
-bash "chmod of jmxtrans shell script" do
-  code <<-EOH
-   chmod 0755 /opt/jmxtrans/jmxtrans.sh
-  EOH
-  user node['jmxtrans']['user']
+file "#{node['jmxtrans']['home']}/jmxtrans.sh" do
+  mode "0755"
+  action :touch
 end
 
 template "/etc/init.d/jmxtrans" do
