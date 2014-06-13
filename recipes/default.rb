@@ -18,18 +18,20 @@ end
 user node['jmxtrans']['user']
 
 # merge stock jvm queries w/ container specific ones into single array
+
+#
+# Changes for issue #13 & 14
+#
 servers = node['jmxtrans']['servers'].dup
 servers.each do |server|
  if !server.key?('queries')
   server['queries'] = []
  end
  server['queries'] << node['jmxtrans']['default_queries']['jvm']
- case server['type']
- when 'tomcat'
-   server['queries'] << node['jmxtrans']['default_queries']['tomcat']
- when 'kafka'
-   server['queries'] << node['jmxtrans']['default_queries']['kafka']
- end
+#
+# Case statement was replaced for the enhancement in issue #16
+#
+ server['queries'] << node['jmxtrans']['default_queries'][server['type']]
  server['queries'].flatten!
 end
 
@@ -42,7 +44,10 @@ ark "jmxtrans" do
   owner node['jmxtrans']['user']
   group node['jmxtrans']['user']
 end
-
+#
+# New resource to change the mode of jmxtrans.sh so that service can 
+# start successfully. Issue #17
+#
 file "#{node['jmxtrans']['home']}/jmxtrans.sh" do
   mode "0755"
   action :touch
