@@ -29,7 +29,7 @@ servers.each do |server|
  end
  server['queries'] << node['jmxtrans']['default_queries']['jvm']
 #
-# Case statement was replaced for the enhancement in issue #16
+# Case statement was replaced for enhancement in issue #16
 #
  server['queries'] << node['jmxtrans']['default_queries'][server['type']]
  server['queries'].flatten!

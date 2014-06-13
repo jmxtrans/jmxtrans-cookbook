@@ -72,12 +72,5 @@ default['jmxtrans']['default_queries'] = {
                  "result_alias" => "datasources",
                  "attr" => [ "NumActive", "NumIdle", "NumQueryThreads" ]
                }
-              ],
-  'kafka' => [
-	      {
-		'obj' => "\\\"kafka.server\\\":type=\\\"BrokerTopicMetrics\\\",name=*",
-		'result_alias' => "kafka.BrokerTopicMetrics",
-		'attr' => [ "Count", "MeanRate", "OneMinuteRate", "FiveMinuteRate", "FifteenMinuteRate" ]
-	      }
-             ]
+              ]
 }
