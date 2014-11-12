@@ -1,10 +1,13 @@
-# <a name="title"></a> chef-jmxtrans[![Build Status](https://secure.travis-ci.org/bryanwb/chef-jmxtrans.png?branch=master)](http://travis-ci.org/bryanwb/chef-jmxtrans)
+# <a name="title"></a> jmxtrans-cookbook[![Build Status](https://secure.travis-ci.org/bijugs/jmxtrans-cookbook.png?branch=master)](http://travis-ci.org/bijugs/jmxtrans-cookbook)
 
 
 Description
 ===========
 
-I am the jmxtrans cookbook!
+This repo is a Chef cookbook to install and configure JMXTrans originally
+developed by [Bryan Berry](https://github.com/bryanwb/chef-jmxtrans). Thanks
+Bryan. Since Bryan is no longer maintaining the original repo, this repo was
+created with his permission.
 
 [jmxtrans](https://github.com/lookfirst/jmxtrans) is an excellent tool
 for transporting jmx data from your VMs and into a graphing tool like
@@ -61,4 +64,4 @@ the following example comes from a role
 Author
 ======
 
-Bryan W. Berry, Copyright 2012, Apache 2.0 license
+Copyright 2012, Apache 2.0 license
