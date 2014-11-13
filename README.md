@@ -61,7 +61,7 @@ the following example comes from a role
 }
 ```
 
-Author
-======
+Copyright
+=========
 
 Copyright 2012, Apache 2.0 license
