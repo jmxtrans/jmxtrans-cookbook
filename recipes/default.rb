@@ -105,11 +105,6 @@ cron "compress and remove logs rotated by log4j" do
   find #{node['jmxtrans']['log_dir']} ! -name '*.gz' -mtime +2 -exec gzip '{}' \\;"
 end
 
-execute "set correct jps alternative" do
-  command "update-alternatives jps --auto jps"
-  creates "/usr/bin/jps"
-end
-
 service "jmxtrans" do
   supports :restart => true, :status => true, :reload => true
   action [ :enable, :start]
