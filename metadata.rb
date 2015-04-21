@@ -1,4 +1,4 @@
-name             'jmxtrans'
+name             'jmxtrans-cookbook'
 maintainer       "Biju Nair"
 maintainer_email "gs.biju at gmail.com"
 license          "Apache 2.0"
