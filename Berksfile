@@ -1,4 +1,8 @@
 source "https://supermarket.chef.io"
 
 metadata
-cookbook 'ark'
+
+group :test do
+  cookbook 'ark'
+  cookbook 'java'
+end
