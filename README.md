@@ -1,4 +1,4 @@
-# <a name="title"></a> jmxtrans-cookbook[![Build Status](https://secure.travis-ci.org/bijugs/jmxtrans-cookbook.png?branch=master)](http://travis-ci.org/bijugs/jmxtrans-cookbook)
+# <a name="title"></a> jmxtrans-cookbook  [![Build Status](https://secure.travis-ci.org/jmxtrans/jmxtrans-cookbook.png?branch=master)](http://travis-ci.org/jmxtrans/jmxtrans-cookbook)
 
 Description
 ===========
