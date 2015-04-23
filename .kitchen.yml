@@ -19,5 +19,5 @@ suites:
   - name: default
     run_list:
       - recipe[java::default]
-      - recipe[jmxtrans::default]
+      - recipe[jmxtrans-cookbook::default]
     attributes:
