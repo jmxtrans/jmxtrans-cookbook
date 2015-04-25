@@ -7,10 +7,17 @@ provisioner:
 
 platforms:
   - name: ubuntu-12.04
-  - name: centos-6.4
+    attributes:
+      java:
+        jdk_version: 7
+  - name: centos-6.5
+    attributes:
+      java:
+        jdk_version: 7
 
 suites:
   - name: default
     run_list:
-      - recipe[jmxtrans::default]
+      - recipe[java::default]
+      - recipe[jmxtrans-cookbook::default]
     attributes:

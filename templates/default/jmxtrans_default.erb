@@ -1,7 +1,14 @@
+<% if node['jmxtrans']['java_home'] %>
+export JAVA_HOME=<%= node['jmxtrans']['java_home'] %>
+<% end %>
 export JAR_FILE='<%= "#{node['jmxtrans']['home']}/jmxtrans-all.jar" %>'
 export LOG_DIR="<%= node['jmxtrans']['log_dir'] %>"
 export SECONDS_BETWEEN_RUNS=<%= node['jmxtrans']['run_interval'] %>
+<% if node['jmxtrans']['json_dir'] %>
+export JSON_DIR=<%= node['jmxtrans']['json_dir'] %>
+<% else %>
 export JSON_DIR=<%= "#{node['jmxtrans']['home']}/json" %>
+<% end %>
 export HEAP_SIZE=<%= node['jmxtrans']['heap_size'] %>
 export NEW_SIZE=64
 export CPU_CORES=<%= node['cpu']['total'] %>

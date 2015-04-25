@@ -2,7 +2,7 @@
 # Cookbook Name:: jmxtrans
 # Recipe:: default
 #
-# Copyright 2012, Bryan W. Berry
+# Copyright 2015, Biju Nair & Contributors  
 #
 # Apache 2.0 license
 #
@@ -59,7 +59,7 @@ template "/etc/init.d/jmxtrans" do
   group "root"
   mode  "0755"
   variables( :name => 'jmxtrans' )
-  notifies :restart, "service[jmxtrans]"
+  notifies :restart, "service[jmxtrans]", :delayed
 end
 
 template "/etc/default/jmxtrans" do
@@ -67,7 +67,7 @@ template "/etc/default/jmxtrans" do
   owner "root"
   group "root"
   mode  "0644"
-  notifies :restart, "service[jmxtrans]"
+  notifies :restart, "service[jmxtrans]", :delayed
 end
 
 directory node['jmxtrans']['log_dir'] do
@@ -76,18 +76,18 @@ directory node['jmxtrans']['log_dir'] do
   mode  "0755"
 end
 
-directory "#{node['jmxtrans']['home']}/json" do
+directory node['jmxtrans']['json_dir'] do
   owner node['jmxtrans']['user']
   group node['jmxtrans']['user']
   mode  "0755"
 end
 
-template "#{node['jmxtrans']['home']}/json/set1.json" do
+template "#{node['jmxtrans']['json_dir']}/set1.json" do
   source "set1.json.erb"
   owner node['jmxtrans']['user']
   group node['jmxtrans']['user']
   mode  "0755"
-  notifies :restart, "service[jmxtrans]"
+  notifies :restart, "service[jmxtrans]", :delayed
   variables(
             :servers => servers,
             :graphite_host => node['jmxtrans']['graphite']['host'],

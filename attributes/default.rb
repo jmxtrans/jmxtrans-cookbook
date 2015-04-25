@@ -1,5 +1,7 @@
 default['jmxtrans']['install_prefix'] = '/opt'
+default['jmxtrans']['java_home'] = '/usr/bin/java'
 default['jmxtrans']['home'] = "#{default['jmxtrans']['install_prefix']}/jmxtrans"
+default['jmxtrans']['json_dir'] = "#{default['jmxtrans']['home']}/json"
 default['jmxtrans']['log_dir'] = '/var/log/jmxtrans'
 default['jmxtrans']['user'] = 'jmxtrans'
 default['jmxtrans']['url'] = 'https://github.com/downloads/jmxtrans/jmxtrans/jmxtrans-20120525-210643-4e956b1144.zip'
