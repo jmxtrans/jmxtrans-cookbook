@@ -26,7 +26,7 @@ fi
 RETVAL=0
 prog=$NAME
 user=$NAME
-exec='<%="#{node['jmxtrans']['home']}/jmxtrans.sh" %>'
+exec='<%="#{node['jmxtrans']['home']}/bin/jmxtrans.sh" %>'
 lockfile=/var/lock/subsys/<%= @name %>
 config=/etc/default/<%= @name %>
 

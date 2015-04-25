@@ -1,8 +1,8 @@
 #
 # Cookbook Name:: jmxtrans-cookbook
-# Recipe:: ubuntu-install.rb
+# Recipe:: centos-install.rb
 #
-# Install jmxtrans on Ubuntu using deb package
+# Install jmxtrans on centos using rpm package
 #
 # Copyright 2015, Biju Nair & Contributors  
 #
@@ -22,17 +22,17 @@ servers.each do |server|
 end
 
 remote_file "#{Chef::Config[:file_cache_path]}/jmxtrans-249.deb" do
-  source "#{node['jmxtrans']['url']}/#{node['jmxtrans']['version']}/jmxtrans-#{node['jmxtrans']['version']}.deb"
+  source "#{node['jmxtrans']['url']}/#{node['jmxtrans']['version']}/jmxtrans-#{node['jmxtrans']['version']}.rpm"
   #checksum "http://central.maven.org/maven2/org/jmxtrans/jmxtrans/249/jmxtrans-249.deb.sha1"
   action :create_if_missing
 end
 
-dpkg_package "jmxtrans-#{node['jmxtrans']['version']}" do
+yum_package "jmxtrans-#{node['jmxtrans']['version']}" do
   action :upgrade
   source "#{Chef::Config[:file_cache_path]}/jmxtrans-#{node['jmxtrans']['version']}.deb"
 end
 
-template "/etc/default/jmxtrans" do
+template "/etc/sysconfig/jmxtrans" do
   source "jmxtrans_default.erb"
   owner "root"
   group "root"

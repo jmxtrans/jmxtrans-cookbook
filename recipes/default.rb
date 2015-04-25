@@ -2,6 +2,12 @@
 # Cookbook Name:: jmxtrans
 # Recipe:: default
 #
+# Recipe to install jmxtrans using tar.gz
+# *** Warning *** Warning ***
+# The tar.gz structure is broken so the recipe
+# doesn't work currently 
+# *** Warning *** Warning ***
+#
 # Copyright 2015, Biju Nair & Contributors  
 #
 # Apache 2.0 license
@@ -36,8 +42,8 @@ servers.each do |server|
 end
 
 ark "jmxtrans" do
-  url node['jmxtrans']['url']
-  checksum node['jmxtrans']['checksum']
+  url "#{node['jmxtrans']['url']}/#{node['jmxtrans']['version']}/jmxtrans-#{node['jmxtrans']['version']}-dist.tar.gz"
+  #checksum node['jmxtrans']['checksum']
   version "latest"
   prefix_root '/opt'
   prefix_home '/opt'
@@ -48,7 +54,7 @@ end
 # New resource to change the mode of jmxtrans.sh so that service can 
 # start successfully. Issue #17
 #
-file "#{node['jmxtrans']['home']}/jmxtrans.sh" do
+file "#{node['jmxtrans']['home']}/bin/jmxtrans.sh" do
   mode "0755"
   action :touch
 end
