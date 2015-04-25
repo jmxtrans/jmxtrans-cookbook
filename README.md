@@ -1,5 +1,14 @@
 # <a name="title"></a> jmxtrans-cookbook  [![Build Status](https://secure.travis-ci.org/jmxtrans/jmxtrans-cookbook.png?branch=master)](http://travis-ci.org/jmxtrans/jmxtrans-cookbook)
 
+Notice
+======
+[ver-2.0](https://github.com/jmxtrans/jmxtrans-cookbook/tree/ver-2.0) branch of this cookbook uses the latest version of ``jmxtrans`` and is available for use.
+
+- ``default`` recipe installs from tar.gz file
+- ``ubuntu_install`` recipe for ``deb``
+- ``centos_install`` recipe for ``rpm``
+- ``remove_ver1`` to remove ``jmxtrans`` installed using the earlier version of this cookbook.
+
 Description
 ===========
 
