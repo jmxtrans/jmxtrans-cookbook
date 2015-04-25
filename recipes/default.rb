@@ -44,7 +44,7 @@ end
 ark "jmxtrans" do
   url "#{node['jmxtrans']['url']}/#{node['jmxtrans']['version']}/jmxtrans-#{node['jmxtrans']['version']}-dist.tar.gz"
   #checksum node['jmxtrans']['checksum']
-  version "latest"
+  version node['jmxtrans']['version']
   prefix_root '/opt'
   prefix_home '/opt'
   owner node['jmxtrans']['user']
@@ -57,6 +57,15 @@ end
 file "#{node['jmxtrans']['home']}/bin/jmxtrans.sh" do
   mode "0755"
   action :touch
+end
+#
+# Required for https://github.com/jmxtrans/jmxtrans/issues/283
+#
+remote_file "Copy jmxtrans-all.jar to bin" do
+  path "#{node['jmxtrans']['home']}/jmxtrans-all.jar"
+  source "file:///#{node['jmxtrans']['home']}/lib/jmxtrans-all.jar"
+  owner node['jmxtrans']['user']
+  group node['jmxtrans']['user']
 end
 
 template "/etc/init.d/jmxtrans" do
