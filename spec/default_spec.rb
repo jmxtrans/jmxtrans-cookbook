@@ -1,5 +1,6 @@
 require 'chefspec'
 require 'chefspec/berkshelf'
+require_relative './support/matchers.rb'
 
 RSpec.configure do |config|
   config.cookbook_path = '../'
@@ -7,6 +8,10 @@ end
 
 describe 'jmxtrans-cookbook::default' do
   let(:chef_run){ChefSpec::SoloRunner.new.converge(described_recipe)}
+
+  it 'installs jmxtrans zip' do
+    expect(chef_run).to install_ark('jmxtrans')
+  end
 
   it 'create file jmxtrans.sh' do
     expect(chef_run).to touch_file('/opt/jmxtrans/jmxtrans.sh')

@@ -1,5 +1,5 @@
 <% if node['jmxtrans']['java_home'] %>
-export TEST=<%= node['jmxtrans']['java_home'] %>
+export JAVA_HOME=<%= node['jmxtrans']['java_home'] %>
 <% end %>
 export JAR_FILE='<%= "#{node['jmxtrans']['home']}/jmxtrans-all.jar" %>'
 export LOG_DIR="<%= node['jmxtrans']['log_dir'] %>"
