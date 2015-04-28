@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: jmxtrans-cookbook
+# Cookbook Name:: jmxtrans
 # Recipe:: centos-install.rb
 #
 # Install jmxtrans on centos using rpm package
@@ -8,8 +8,6 @@
 #
 # Apache 2.0 license
 #
-
-user node['jmxtrans']['user']
 
 servers = node['jmxtrans']['servers'].dup
 servers.each do |server|
@@ -21,16 +19,18 @@ servers.each do |server|
  server['queries'].flatten!
 end
 
-remote_file "#{Chef::Config[:file_cache_path]}/jmxtrans-249.deb" do
+remote_file "#{Chef::Config[:file_cache_path]}/jmxtrans-#{node['jmxtrans']['version']}.rpm" do
   source "#{node['jmxtrans']['url']}/#{node['jmxtrans']['version']}/jmxtrans-#{node['jmxtrans']['version']}.rpm"
-  #checksum "http://central.maven.org/maven2/org/jmxtrans/jmxtrans/249/jmxtrans-249.deb.sha1"
+  #checksum "http://central.maven.org/maven2/org/jmxtrans/jmxtrans/#{node['jmxtrans']['version']}/jmxtrans-#{node['jmxtrans']['version']}.deb.sha1"
   action :create_if_missing
 end
 
 yum_package "jmxtrans-#{node['jmxtrans']['version']}" do
   action :upgrade
-  source "#{Chef::Config[:file_cache_path]}/jmxtrans-#{node['jmxtrans']['version']}.deb"
+  source "#{Chef::Config[:file_cache_path]}/jmxtrans-#{node['jmxtrans']['version']}.rpm"
 end
+
+user node['jmxtrans']['user']
 
 template "/etc/sysconfig/jmxtrans" do
   source "jmxtrans_default.erb"

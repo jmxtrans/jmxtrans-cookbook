@@ -19,5 +19,5 @@ suites:
   - name: default
     run_list:
       - recipe[java::default]
-      - recipe[jmxtrans::ubuntu_install]
+      - recipe[jmxtrans::default]
     attributes:

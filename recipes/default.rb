@@ -3,10 +3,6 @@
 # Recipe:: default
 #
 # Recipe to install jmxtrans using tar.gz
-# *** Warning *** Warning ***
-# The tar.gz structure is broken so the recipe
-# doesn't work currently 
-# *** Warning *** Warning ***
 #
 # Copyright 2015, Biju Nair & Contributors  
 #
