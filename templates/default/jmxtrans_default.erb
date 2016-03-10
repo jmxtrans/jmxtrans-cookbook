@@ -14,4 +14,6 @@ export NEW_SIZE=64
 export CPU_CORES=<%= node['cpu']['total'] %>
 export NEW_RATIO=8
 export LOG_LEVEL=<%= node['jmxtrans']['log_level'] %>
-
+<% if node['jmxtrans']['jmxtrans_opts'] %>
+export JMXTRANS_OPTS='<%= node['jmxtrans']['jmxtrans_opts'] %>'
+<% end %>
