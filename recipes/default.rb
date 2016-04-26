@@ -38,7 +38,7 @@ servers.each do |server|
 end
 
 ark "jmxtrans" do
-  url "#{node['jmxtrans']['url']}/#{node['jmxtrans']['version']}/jmxtrans-#{node['jmxtrans']['version']}-dist.tar.gz"
+  url "#{node['jmxtrans']['url']}/jmxtrans-#{node['jmxtrans']['version']}-dist.tar.gz"
   #checksum node['jmxtrans']['checksum']
   version node['jmxtrans']['version']
   prefix_root '/opt'
