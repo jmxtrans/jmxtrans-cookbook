@@ -1,11 +1,11 @@
 default['jmxtrans']['install_prefix'] = '/opt'
-default['jmxtrans']['java_home'] = '/usr/bin/java'
+default['jmxtrans']['java_home'] = nil
 default['jmxtrans']['home'] = "#{default['jmxtrans']['install_prefix']}/jmxtrans"
 default['jmxtrans']['json_dir'] = "#{default['jmxtrans']['home']}/json"
 default['jmxtrans']['log_dir'] = '/var/log/jmxtrans'
 default['jmxtrans']['version'] = '250'
 default['jmxtrans']['user'] = 'jmxtrans'
-default['jmxtrans']['url'] = 'http://central.maven.org/maven2/org/jmxtrans/jmxtrans/'
+default['jmxtrans']['url'] = "http://central.maven.org/maven2/org/jmxtrans/jmxtrans/#{default['jmxtrans']['version']}"
 default['jmxtrans']['checksum'] = '0a5a2c361cc666f5a7174e2c77809e1a973c3af62868d407c68beb892f1b0217'
 default['jmxtrans']['heap_size'] = '512'
 default['jmxtrans']['run_interval'] = '60'
