@@ -1,7 +1,16 @@
 default['jmxtrans']['install_prefix'] = '/opt'
+#
+# Note that deb and rpm will install software as per standards
+# and the install_prefix attribute is applicable only for installation
+# using the tar.gz file provided by jmxtrans.
+#
 default['jmxtrans']['java_home'] = nil
 default['jmxtrans']['home'] = "#{default['jmxtrans']['install_prefix']}/jmxtrans"
 default['jmxtrans']['json_dir'] = "#{default['jmxtrans']['home']}/json"
+#
+# Note: for deb and rpm installation the json directory will be /var/lib/jmxtrans
+# the json_dir attribute is applicable only for installation using tar.gz
+#
 default['jmxtrans']['log_dir'] = '/var/log/jmxtrans'
 default['jmxtrans']['version'] = '250'
 default['jmxtrans']['user'] = 'jmxtrans'
