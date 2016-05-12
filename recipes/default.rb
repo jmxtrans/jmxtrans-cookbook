@@ -46,7 +46,6 @@ elsif platform_family?('rhel')
         action :install
         allow_downgrade true
     end
-
 end
 
 # ark 'jmxtrans' do
@@ -103,10 +102,10 @@ template "#{node['jmxtrans']['json_dir']}/set1.json" do
     mode  '0755'
     notifies :restart, 'service[jmxtrans]', :delayed
     variables(
-        servers: servers,
-        graphite_host: node['jmxtrans']['graphite']['host'],
-        graphite_port: node['jmxtrans']['graphite']['port'],
-        root_prefix: node['jmxtrans']['root_prefix']
+        servers: servers
+    # graphite_host: node['jmxtrans']['graphite']['host'],
+    # graphite_port: node['jmxtrans']['graphite']['port'],
+    # root_prefix: node['jmxtrans']['root_prefix']
     )
 end
 
