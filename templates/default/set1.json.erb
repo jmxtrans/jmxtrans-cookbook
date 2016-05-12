@@ -19,9 +19,16 @@
         ,
         <% end -%>
     {
+      "resultAlias": "<%= query['result_alias'] %>",
+      "obj": "<%= query['obj'] %>",
+      "attr": [<%= query['attr'].map {|t| "\""+t.to_s+"\""}.join(', ') %>],
      "outputWriters": [
+     <% server['output_writers'].each_with_index do |output_writer,index| -%>
+         <% unless index == 0 -%>
+         ,
+         <% end -%>
       {
-       "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
+       "@class": <%= output_writer['class'] %>,
        "settings": {
         "typeNames": <%= if query.has_key?('type_name') then query['type_name'].to_s else [ "name" ] end%>,
         "host": "<%= @graphite_host %>",
@@ -29,14 +36,11 @@
         "rootPrefix": "<%= @root_prefix %>"
        }
       }
-     ],
-     "resultAlias": "<%= query['result_alias'] %>",
-     "obj": "<%= query['obj'] %>",
-     "attr": [<%= query['attr'].map {|t| "\""+t.to_s+"\""}.join(', ') %>]
+     ]
     }
     <% end -%>
     ]
  }
 <% end -%>
-] 
+]
 }

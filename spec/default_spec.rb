@@ -40,7 +40,7 @@ describe 'jmxtrans-cookbook::default' do
   it 'installs gzip' do
     expect(chef_run).to install_package('gzip')
   end
-  
+
   it 'start jmxtrans service' do
     expect(chef_run).to start_service('jmxtrans')
   end
