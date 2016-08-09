@@ -23,7 +23,7 @@
       "obj": "<%= query['obj'] %>",
       "attr": [<%= query['attr'].map {|t| "\""+t.to_s+"\""}.join(', ') %>],
      "outputWriters": [
-     <% server['output_writers'].each_with_index do |output_writer,index| -%>
+     <% query['output_writers'].each_with_index do |output_writer,index| -%>
          <% unless index == 0 -%>
          ,
          <% end -%>
@@ -36,6 +36,7 @@
         "rootPrefix": "<%= @root_prefix %>"
        }
       }
+      <% end -%>
      ]
     }
     <% end -%>

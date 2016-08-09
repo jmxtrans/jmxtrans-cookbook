@@ -34,18 +34,18 @@ default['jmxtrans']['log_level'] = 'debug'
 
 default['jmxtrans']['servers'] = [
     {
-        'host' => 'localhost',
-        'port' => 1090,
-        'type' => 'test',
-        'username' => 'xxx',
-        'password' => 'sss',
-        'queries' => [
-            'obj' => 'test',
-            'attr' => %w(something something),
-            'output_writers' => [
-                'class' => 'com.googlecode.jmxtrans.model.output.elastic.ElasticWriter',
-                'connectionUrl' => 'http://elasticsearch-sndbx.hq.target.com:9200',
-                'rootPrefix' => 'sdm'
+        host: 'localhost',
+        port: 1090,
+        type: 'test',
+        username: 'xxx',
+        password: 'sss',
+        queries: [
+            obj: 'test',
+            attr: %w(something something),
+            output_writers: [
+                class: 'com.googlecode.jmxtrans.model.output.elastic.ElasticWriter',
+                connectionUrl: 'http://elasticsearch-sndbx.hq.target.com:9200',
+                rootPrefix: 'sdm'
             ]
         ]
     }

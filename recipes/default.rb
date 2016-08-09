@@ -15,7 +15,7 @@
 #     init_script_file = 'jmxtrans.init.el.erb'
 # end
 
-user node['jmxtrans']['user']
+# user node['jmxtrans']['user']
 
 # merge stock jvm queries w/ container specific ones into single array
 
@@ -33,16 +33,17 @@ user node['jmxtrans']['user']
 #     server['queries'].flatten!
 # end
 
-if platform_family?('debian')
+case node['platform_family']
+when 'debian'
     # init_script_file = 'jmxtrans.init.deb.erb'
-elsif platform_family?('rhel')
-    remote_file 'jmxtrans' do
+when 'rhel'
+    remote_file "#{Chef::Config[:file_cache_path]}/jmxtrans.rpm" do
         source 'http://central.maven.org/maven2/org/jmxtrans/jmxtrans/254/jmxtrans-254.rpm'
         action :create
     end
 
     rpm_package 'jmxtrans' do
-        source localPath
+        source "#{Chef::Config[:file_cache_path]}/jmxtrans.rpm"
         action :install
         allow_downgrade true
     end
@@ -102,10 +103,7 @@ template "#{node['jmxtrans']['json_dir']}/set1.json" do
     mode  '0755'
     notifies :restart, 'service[jmxtrans]', :delayed
     variables(
-        servers: servers
-    # graphite_host: node['jmxtrans']['graphite']['host'],
-    # graphite_port: node['jmxtrans']['graphite']['port'],
-    # root_prefix: node['jmxtrans']['root_prefix']
+        servers: node['jmxtrans']['servers']
     )
 end
 

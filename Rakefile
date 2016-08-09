@@ -1,42 +1,35 @@
 #!/usr/bin/env rake
+require 'foodcritic'
+require 'rspec/core/rake_task'
+require 'rubocop/rake_task'
 
-task default: 'foodcritic'
+task default: %w(style unit)
 
-desc 'Runs foodcritic linter'
-task :foodcritic do
-    Rake::Task[:prepare_sandbox].execute
+# Setup Rubocop tasks; rubocop and rubocop:autocorrect
+RuboCop::RakeTask.new
 
-    if Gem::Version.new('1.9.2') <= Gem::Version.new(RUBY_VERSION.dup)
-        sh "foodcritic -f any #{sandbox_path}"
-    else
-        puts "WARN: foodcritic run is skipped as Ruby #{RUBY_VERSION} is < 1.9.2."
+# Setup foodcritic task
+FoodCritic::Rake::LintTask.new do |foodcritic|
+    foodcritic.options = { tags: %w(~FC003 ~FC059), fail_tags: ['correctness'] }
+end
+
+# A task that runs foodcritic and rubocop
+desc 'Run the style tests'
+task :style do
+    Rake::Task['foodcritic'].invoke
+    Rake::Task['rubocop'].invoke
+end
+
+# Setup the ChefSpec Unit tests task
+namespace :unit do
+    desc 'Run rspec and chefspec tests'
+    RSpec::Core::RakeTask.new do |rspec|
+        rspec.pattern = 'spec/**/*_spec.rb'
     end
 end
 
-desc 'Runs knife cookbook test'
-task :knife do
-    Rake::Task[:prepare_sandbox].execute
-
-    sh "bundle exec knife cookbook test cookbook -c test/.chef/knife.rb -o #{sandbox_path}/../"
-end
-
-task :prepare_sandbox do
-    files = %w(*.md *.rb attributes definitions files libraries providers recipes resources templates)
-
-    rm_rf sandbox_path
-    mkdir_p sandbox_path
-    cp_r Dir.glob("{#{files.join(',')}}"), sandbox_path
-end
-
-private
-
-def sandbox_path
-    File.join(File.dirname(__FILE__), %w(tmp cookbooks cookbook))
-end
-
-begin
-    require 'kitchen/rake_tasks'
-    Kitchen::RakeTasks.new
-rescue LoadError
-    puts '>>>>> Kitchen gem not loaded, omitting tasks' unless ENV['CI']
+# Use the unit task to execute all unit tests
+desc 'Run all unit tests'
+task :unit do
+    Rake.application.in_namespace(:unit) { |unittests| unittests.tasks.each(&:invoke) }
 end
