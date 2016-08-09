@@ -1,10 +1,11 @@
 language: ruby
-# gemfile:
-#    - test/support/Gemfile
+before_install:
+  - gem update --system
+  - gem --version
 rvm:
   - 2.2.0
 script:
   # - bundle exec rake knife
-  - bundle install
+  # - bundle install
   - bundle exec rake
   # - bundle exec rubocop
