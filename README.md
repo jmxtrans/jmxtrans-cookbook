@@ -1,4 +1,4 @@
-# <a name="title"></a> jmxtrans-cookbook  [![Build Status](https://secure.travis-ci.org/jmxtrans/jmxtrans-cookbook.png?branch=master)](http://travis-ci.org/jmxtrans/jmxtrans-cookbook)
+# <a name="title"></a> jmxtrans-cookbook  [![Build Status](https://drone.io/github.com/jkgentry/jmxtrans-cookbook/status.png)](https://drone.io/github.com/jkgentry/jmxtrans-cookbook/latest)
 
 Notice
 ======
@@ -26,7 +26,7 @@ Requirements
 ============
 
 * Depends on the ark cookbook
-* JMXTrans is java based and Java need to be installed for it to start and 
+* JMXTrans is java based and Java need to be installed for it to start and
   run successfully. So `` java `` cookbook is suggested.
 
 Attributes
@@ -76,9 +76,9 @@ Copyright
 
 Copyright 2015, [Apache 2.0 license](http://www.apache.org/licenses/LICENSE-2.0)
 
-Unless required by applicable law or agreed to in writing, software distributed 
-under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR 
-CONDITIONS OF ANY KIND, either expressed or implied. See the license for the specific 
+Unless required by applicable law or agreed to in writing, software distributed
+under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+CONDITIONS OF ANY KIND, either expressed or implied. See the license for the specific
 language governing permissions and limitations under the license.
 
 Contributing
