@@ -10,7 +10,7 @@ platforms:
     attributes:
       java:
         jdk_version: 7
-  - name: centos-6.5
+  - name: centos-7.1
     attributes:
       java:
         jdk_version: 7
@@ -21,3 +21,4 @@ suites:
       - recipe[java::default]
       - recipe[jmxtrans::default]
     attributes:
+      # platform_family: 'rhel'
