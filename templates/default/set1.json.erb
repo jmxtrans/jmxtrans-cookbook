@@ -23,7 +23,7 @@
       {
        "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
        "settings": {
-        "typeNames": [   "name" ],
+        "typeNames": <%= if query.has_key?('type_name') then query['type_name'].to_s else [ "name" ] end%>,
         "host": "<%= @graphite_host %>",
         "port": <%= @graphite_port %>,
         "rootPrefix": "<%= @root_prefix %>"
