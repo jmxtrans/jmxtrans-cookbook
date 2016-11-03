@@ -17,6 +17,7 @@ default['jmxtrans']['user'] = 'jmxtrans'
 default['jmxtrans']['url'] = "http://central.maven.org/maven2/org/jmxtrans/jmxtrans/#{default['jmxtrans']['version']}"
 default['jmxtrans']['checksum'] = '0a5a2c361cc666f5a7174e2c77809e1a973c3af62868d407c68beb892f1b0217'
 default['jmxtrans']['heap_size'] = '512'
+default['jmxtrans']['jmxtrans_opts'] = nil
 default['jmxtrans']['run_interval'] = '60'
 default['jmxtrans']['log_level'] = 'debug'
 default['jmxtrans']['graphite']['host'] = 'graphite'
