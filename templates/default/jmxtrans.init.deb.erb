@@ -20,7 +20,7 @@ PIDFILE="/var/run/<%= @name %>.pid"
 
 RUNCMD="if [ -f /etc/default/<%= @name %> ]; then source /etc/default/<%= @name %> ; fi ; \
           cd <%= node['jmxtrans']['home'] %> ; \
-          ./jmxtrans.sh"
+          ./bin/jmxtrans.sh"
 
 
 do_start() {

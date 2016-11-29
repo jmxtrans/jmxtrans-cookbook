@@ -1,4 +1,4 @@
-<% if node['jmxtrans']['java_home'] %>
+<% if !node['jmxtrans']['java_home'].nil? %>
 export JAVA_HOME=<%= node['jmxtrans']['java_home'] %>
 <% end %>
 export JAR_FILE='<%= "#{node['jmxtrans']['home']}/jmxtrans-all.jar" %>'
