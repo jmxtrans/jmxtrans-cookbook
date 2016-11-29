@@ -20,7 +20,7 @@ servers.each do |server|
 end
 
 remote_file "#{Chef::Config[:file_cache_path]}/jmxtrans-#{node['jmxtrans']['version']}.rpm" do
-  source "#{node['jmxtrans']['url']}/#{node['jmxtrans']['version']}/jmxtrans-#{node['jmxtrans']['version']}.rpm"
+  source "#{node['jmxtrans']['url']}/jmxtrans-#{node['jmxtrans']['version']}.rpm"
   #checksum "http://central.maven.org/maven2/org/jmxtrans/jmxtrans/#{node['jmxtrans']['version']}/jmxtrans-#{node['jmxtrans']['version']}.deb.sha1"
   action :create_if_missing
 end
